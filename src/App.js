@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
     const expenses_data = [
@@ -18,7 +19,7 @@ function App() {
         },
         {
             id: "e3",
-            title: "Damn son",
+            title: "Apple product",
             amount: 69.00,
             date: new Date(2021, 6, 3),
         },
@@ -29,9 +30,15 @@ function App() {
             date: new Date(2021, 1, 19),
         },
     ];
+
+    const addExpenseHandler = (expense) => {
+        console.log('In App.js:');
+        console.log(expense);
+    };
+
     return (
         <div>
-            <h2>Let's get started</h2>
+            <NewExpense onAddExpense={addExpenseHandler}/>
             <Expenses items={expenses_data}></Expenses>
         </div>
     );
