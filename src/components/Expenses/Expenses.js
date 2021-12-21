@@ -1,19 +1,13 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
+// import ExpenseItem from "./ExpenseItem";
 import ExpenseCard from "../UI/ExpenseCard";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesList from "./ExpensesList";
 
 function Expenses(props) {
-    const [filterYear, setFilterYear] = useState('2021');
-
-    const filteredItemsArray = props.items.filter(item => {
-        // console.log(item.date.getFullYear().toString(), filterYear);
-        return item.date.getFullYear().toString() === filterYear;
-    });
-
-    const expenseItemsArray = filteredItemsArray.map(expense => <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date}></ExpenseItem>);
+    const [filterYear, setFilterYear] = useState("2021");
 
     const changeSelectedYearHandler = (selectedYear) => {
         setFilterYear(selectedYear);
@@ -22,11 +16,11 @@ function Expenses(props) {
         console.log(filterYear);
     };
 
-    let expensesContent = expenseItemsArray;
-    if (filteredItemsArray.length === 0) {
-        expensesContent = <p>No expenses found.</p>;
-    };
-    
+    const filteredItemsArray = props.items.filter((item) => {
+        // console.log(item.date.getFullYear().toString(), filterYear);
+        return item.date.getFullYear().toString() === filterYear;
+    });
+
     return (
         <div>
             <ExpenseCard className="expenses">
@@ -34,27 +28,8 @@ function Expenses(props) {
                     selected={filterYear}
                     onChangeSelectedYear={changeSelectedYearHandler}
                 />
-                {expensesContent}
-                {/* <ExpenseItem
-                    title={props.items[0].title}
-                    amount={props.items[0].amount}
-                    date={props.items[0].date}
-                ></ExpenseItem>
-                <ExpenseItem
-                    title={props.items[1].title}
-                    amount={props.items[1].amount}
-                    date={props.items[1].date}
-                ></ExpenseItem>
-                <ExpenseItem
-                    title={props.items[2].title}
-                    amount={props.items[2].amount}
-                    date={props.items[2].date}
-                ></ExpenseItem>
-                <ExpenseItem
-                    title={props.items[3].title}
-                    amount={props.items[3].amount}
-                    date={props.items[3].date}
-                ></ExpenseItem> */}
+                {/* {expensesContent} */}
+                <ExpensesList filteredExpenses={filteredItemsArray} />
             </ExpenseCard>
         </div>
     );
