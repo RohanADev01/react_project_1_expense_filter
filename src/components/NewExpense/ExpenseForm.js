@@ -25,7 +25,7 @@ const ExpenseForm = (props) => {
         // gather data in a dictionary
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         };
 
