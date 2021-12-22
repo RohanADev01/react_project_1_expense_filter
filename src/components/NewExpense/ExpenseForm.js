@@ -8,29 +8,14 @@ const ExpenseForm = (props) => {
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
-        // setUserInput({
-        //   ...userInput,
-        //   enteredTitle: event.target.value,
-        // });
-        // setUserInput((prevState) => {
-        //   return { ...prevState, enteredTitle: event.target.value };
-        // });
     };
 
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value);
-        // setUserInput({
-        //   ...userInput,
-        //   enteredAmount: event.target.value,
-        // });
     };
 
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
-        // setUserInput({
-    //   ...userInput,
-    //   enteredDate: event.target.value,
-    // });
     };
 
     const submitHandler = (event) => {
@@ -55,6 +40,15 @@ const ExpenseForm = (props) => {
         console.log(enteredTitle);
         console.log(enteredAmount);
         console.log(enteredDate);
+    };
+
+    const cancelHandler = (event) => {
+        setEnteredTitle("");
+        setEnteredAmount("");
+        setEnteredDate("");
+
+        // send true back to state in NewExpense.js to signal cancel clicked and isEditing=false
+        props.onCancelEditing(true)
     };
 
     return (
@@ -90,6 +84,7 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button type="button" onClick={cancelHandler}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>

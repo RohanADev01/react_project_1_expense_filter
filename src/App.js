@@ -28,7 +28,7 @@ const dummy_expenses = [
         title: "Comp2",
         amount: 1659,
         date: new Date(2021, 1, 19),
-    },
+    }
 ];
 
 function App() {

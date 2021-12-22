@@ -22,6 +22,11 @@
 }
 
 .new-expense__actions {
+    /* experimental css - flex for buttons ExpenseForm - NewExpense.css */
+    display:flex;
+    justify-content: right;
+    gap: 1rem;
+    /* rest */
     margin: 1rem;
     text-align: right;
   }
